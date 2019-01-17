@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="show.css">
+</head>
+<body>
+
+
+
+
+
+
+
+
+<% if flash[:notice] %>
+ <p><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:update] %>
+ <p><%= flash[:update] %></p>
+<% end %>
+
+
+
+
+
+
+<main>
+<strong>Title:</strong><%= @booker.title %> <br>
+<strong>Body:</strong><%= @booker.body %><br>
+
+<%= link_to "Edit" ,edit_booker_path(@booker.id), class: "edit_#{@booker.id}" %>
+<%= link_to "Back" , bookers_path, class: "back" %>
+
+</main>

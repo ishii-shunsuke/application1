@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="edit.css">
+</head>
+<body>
+
+
+
+
+
+<main>
+<h1>Editing Book</h1>
+<%= form_for(@booker) do |f| %>
+<h4>Title</h4>
+<%= f.text_field :title , class: "book_title" %>
+<h4>Body</h4>
+<%= f.text_field :body , class: "book_body" %>
+
+<%= f.submit 'Update Book' %>
+
+
+<% end %>
+
+<%= link_to "Show", booker_path(@booker.id), class: "show_#{@booker.id}" %>
+<%= link_to "Back", bookers_path(@booker.id), class: "back" %>
+
+</main>

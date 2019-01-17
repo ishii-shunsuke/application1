@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="application.css">
+</head>
+<body>
+<% if flash[:destroy] %>
+ <p><%= flash[:destroy] %></p>
+<% end %>
+
+
+
+
+	<header>
+		<h1>Books</h1>
+	</header>
+　<table>
+	<thead>
+		<tr>
+			<th>Title</th>
+			<th>Body</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+	<% @bookers.each do |booker| %>
+
+	   <tr>
+			<td>
+				<%= booker.title %>
+			</td>
+			<td>
+				<%= booker.body %>
+			</td>
+		   	<td>
+		   		<%= link_to "show", booker_path(booker.id), class: "show_#{booker.id}" %>
+		   	</td>
+		   	<td>
+		   		<%= link_to "Edit", edit_booker_path(booker.id), class: "edit_#{booker.id}" %>
+		   	</td>
+		   	<td>
+		   		<%= link_to "Destroy", booker_path(booker.id), method: :delete, 
+		   		"data-confirm" => "Are you sure？", class: "destroy_#{booker.id}" %>
+		   	</td>
+	   </tr>
+	<% end %>
+
+
+
+	</tbody>
+</table>
+
+<div class="post">
+<h1>NEW book</h1>
+
+<%= form_for(@booker) do |f| %>
+
+<h4>Title</h4>
+<%= f.text_field :title , class: "book_title" %>
+
+<h4>Body</h4>
+<%= f.text_field :body , class: "book_body" %>
+
+
+<h4><%= f.submit 'create Book' %></h4>
+
+<% end %>
+
+</div>
+
+
+</body>
+
+
+
+
+</body>
+</html>
